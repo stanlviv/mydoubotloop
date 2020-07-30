@@ -1,0 +1,1 @@
+worker: python3 bodia_loop.py
