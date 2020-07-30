@@ -2,6 +2,8 @@ from bs4 import BeautifulSoup
 import requests
 import telebot
 import schedule
+import time
+import datetime
 
 bot = telebot.TeleBot("1380969339:AAFgLsHADwLkM7sYASCrzpVQ0SrwfZX0L00")
 
@@ -39,7 +41,7 @@ def tm():
 
 def pm():
     try:
-        jobs = Parser('https://jobs.dou.ua/vacancies/?category=Project%20Manager&search=%D0%9B%D1%8C%D0%B2%D1%96%D0%B2').get_info()
+        jobs = Parser("https://jobs.dou.ua/vacancies/?category=Project%20Manager&search=%D0%9B%D1%8C%D0%B2%D1%96%D0%B2").get_info()
         bot.send_message(561488159, f"*{tm()}, Бодя!*\n{len(jobs)} вакансій по запиту 'project manager' у Львові:\n", parse_mode='Markdown')
         for key, value in jobs.items():
             position = key
@@ -53,4 +55,4 @@ schedule.every().day.at('15:00').do(pm)
 
 while True:
     schedule.run_pending()
-    time.sleep(45)
+    time.sleep(40)
